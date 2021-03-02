@@ -55,7 +55,6 @@ const props = defineProps({
         {{ t('button.go') }}
       </button>
     </div>
-    Message from API: {{ props.message }}
   </div>
 </template>
 

@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { useHead } from '@vueuse/head'
 
-const title = 'Vitesse SSR'
-const description = 'Opinionated SSR Vite Starter Template'
+const title = 'Pinia + Vite + SSR on Vercel'
+const description = 'Example using Pinia + SSR'
 
 // https://github.com/vueuse/head
 // you can use this to manipulate the document head in any components,
@@ -23,5 +23,5 @@ useHead({
 </script>
 
 <template>
-  <router-view />
+  <router-view></router-view>
 </template>

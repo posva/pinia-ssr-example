@@ -5,14 +5,19 @@ import { createHead } from '@vueuse/head'
 import generatedRoutes from 'pages-generated'
 import { setupLayouts } from 'layouts-generated'
 import App from './App.vue'
+import { useCartStore } from './stores'
+import { RouteRecordRaw } from 'vue-router'
+import { Pinia } from 'pinia'
 
-const routes = setupLayouts(generatedRoutes)
+const routes = setupLayouts(generatedRoutes) as RouteRecordRaw[]
 
 // This piece will move route.meta.state to Page props.
 // This can be removed if you prefer Vuex instead of Page props.
-routes.forEach((route) => {
-  route.props = (r) => ({ ...(r.meta.state || {}), ...(r.props || {}) })
-})
+// routes.forEach((route) => {
+//   if (!('redirect' in route)) {
+//     route.props = (r) => ({ ...(r.meta.state || {}), ...(r.props || {}) })
+//   }
+// })
 
 // https://github.com/frandiox/vite-ssr
 export default viteSSR(App, { routes }, (ctx) => {
@@ -28,17 +33,23 @@ export default viteSSR(App, { routes }, (ctx) => {
 
   app.component(ClientOnly.name, ClientOnly)
 
+  const pinia = router.pinia as Pinia
+
   // Freely modify initialState and it will be serialized later
   if (import.meta.env.SSR) {
-    initialState.test = 'This should appear in page-view-source'
+    const cart = useCartStore(pinia)
+    cart.addItem('Gift from the server')
+    initialState.pinia = JSON.stringify(pinia.state.value)
     // This object can be passed to Vuex store
   } else {
     // In browser, initialState will be hydrated with data from SSR
     console.log('Initial state:', initialState)
+    console.log('pinia', pinia.state.value)
   }
 
   // As an example, make a getPageProps request before each route navigation
   router.beforeEach(async (to, from, next) => {
+    return next()
     if (!!to.meta.state && (!import.meta.env.DEV || import.meta.env.SSR)) {
       // This route has state already (from server) so it can be reused.
       return next()

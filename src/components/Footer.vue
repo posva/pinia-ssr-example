@@ -44,6 +44,10 @@ const toggleLocales = () => {
       <carbon-campsite />
     </router-link>
 
+    <router-link class="icon-btn mx-2" to="/store" :title="t('button.stores')">
+      <noto-pineapple />
+    </router-link>
+
     <a
       class="icon-btn mx-2"
       :title="t('button.toggle_dark')"
