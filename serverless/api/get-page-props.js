@@ -1,5 +1,5 @@
 export default (req, res) => {
-  const url = new URL('http://e.g' + req.url)
+  const url = new URL(`http://e.g${req.url}`)
   console.log('-- getPageProps', url.searchParams.toString())
 
   const routeName = url.searchParams.get('name') || ''
