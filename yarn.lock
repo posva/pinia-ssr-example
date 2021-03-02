@@ -2388,6 +2388,11 @@ picomatch@^2.0.4, picomatch@^2.0.5, picomatch@^2.2.1, picomatch@^2.2.2:
   resolved "https://registry.yarnpkg.com/picomatch/-/picomatch-2.2.2.tgz#21f333e9b6b8eaff02468f5146ea406d345f4dad"
   integrity sha512-q0M/9eZHzmr0AulXyPwNfZjtwZ/RBZlbN3K3CErVrk50T2ASYI7Bye0EvekFY3IP1Nt2DHu0re+V2ZHIpMkuWg==
 
+pinia@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/pinia/-/pinia-0.1.0.tgz#d2e6a413b249770796c9b304f4c4799c2c981714"
+  integrity sha512-Hg8hXv4pw9/ACEXjk91SV5b5Nk45wUHVbwurconKWFpJDwOD7BgpMEPHECWj9WOXlyTfcPpmhqPMRCh72zCQqA==
+
 pirates@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/pirates/-/pirates-4.0.1.tgz#643a92caf894566f91b2b986d2c66950a8e2fb87"
