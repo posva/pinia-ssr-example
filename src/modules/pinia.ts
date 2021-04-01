@@ -11,7 +11,7 @@ export const install: UserModule = ({ isClient, router, app }) => {
     // @ts-ignore
     if (window.__INITIAL_STATE__?.pinia) {
       // @ts-ignore
-      pinia.state.value = JSON.parse(window.__INITIAL_STATE__.pinia)
+      pinia.state.value = window.__INITIAL_STATE__.pinia
     }
   }
 

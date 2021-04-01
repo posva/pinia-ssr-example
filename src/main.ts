@@ -8,6 +8,7 @@ import App from './App.vue'
 import { useCartStore } from './stores'
 import { RouteRecordRaw } from 'vue-router'
 import { Pinia } from 'pinia'
+import devalue from '@nuxt/devalue'
 
 const routes = setupLayouts(generatedRoutes) as RouteRecordRaw[]
 
@@ -39,7 +40,7 @@ export default viteSSR(App, { routes }, (ctx) => {
   if (import.meta.env.SSR) {
     const cart = useCartStore(pinia)
     cart.addItem('Gift from the server')
-    initialState.pinia = JSON.stringify(pinia.state.value)
+    initialState.pinia = devalue(pinia.state.value)
     // This object can be passed to Vuex store
   } else {
     // In browser, initialState will be hydrated with data from SSR
